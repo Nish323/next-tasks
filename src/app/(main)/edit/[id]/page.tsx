@@ -1,7 +1,7 @@
 import EditTaskForm from "@/components/EditTaskForm/EditTaskForm"
 
 interface Params {
-    parms: { id: string }
+    params: { id: string }
 }
 
 const EditTaskPage = ({ params }: Params) => {
