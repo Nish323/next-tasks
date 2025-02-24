@@ -5,24 +5,24 @@ import { connextDb } from "@/utils/database";
 import { redirect } from "next/navigation";
 
 export interface FormState {
-    error: string;
+  error: string;
 }
 
 export const createTask = async (state: FormState, formData: FormData) => {
-    const newTask: Task = {
-        title: formData.get('title') as string,
-        description: formData.get('description') as string,
-        dueDate: formData.get('dueDate') as string,
-        isCompleted: false,
-    }
+  const newTask: Task = {
+    title: formData.get('title') as string,
+    description: formData.get('description') as string,
+    dueDate: formData.get('dueDate') as string,
+    isCompleted: false,
+  }
 
-    try {
-        await connextDb();
-        await TaskModel.create(newTask);
-    } catch (error) {
-        state.error = 'タスクの作成に失敗しました';
-        return state;
-    }
+  try {
+    await connextDb();
+    await TaskModel.create(newTask);
+  } catch (error) {
+    state.error = 'タスクの作成に失敗しました';
+    return state;
+  }
 
-    redirect('/');
+  redirect('/');
 }
