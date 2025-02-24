@@ -2,7 +2,7 @@ import mongoose, { Document } from "mongoose";
 
 export interface Task {
     title: string;
-    descriprion: string;
+    description: string;
     dueDate: string;
     isCompleted: boolean;
 }
