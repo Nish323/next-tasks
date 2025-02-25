@@ -1,7 +1,7 @@
 'use server';
 
 import { Task, TaskModel } from "@/models/task";
-import { connextDb } from "@/utils/database";
+import { connectDb } from "@/utils/database";
 import { redirect } from "next/navigation";
 
 export interface FormState {
@@ -17,7 +17,7 @@ export const createTask = async (state: FormState, formData: FormData) => {
   }
 
   try {
-    await connextDb();
+    await connectDb();
     await TaskModel.create(newTask);
   } catch (error) {
     state.error = 'タスクの作成に失敗しました';
