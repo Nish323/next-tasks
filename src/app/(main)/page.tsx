@@ -3,7 +3,7 @@ import { TaskDocument } from "@/models/task";
 import Link from "next/link";
 import { MdAddTask } from "react-icons/md";
 
-const getAllTasks = async (): Promise<TaskDocument[]> => {
+export const getAllTasks = async (): Promise<TaskDocument[]> => {
   const response = await fetch(`${process.env.API_URL}/tasks`, {
     cache: 'no-store',
   });
@@ -30,7 +30,9 @@ export default async function MainPage() {
         </Link>
       </header>
       <div className="mt-8 flex flex-wrap gap-4">
-        <TaskCard />
+        {allTasks.map((task) => (
+          <TaskCard key={task._id} task={task} />
+        ))}
       </div>
     </div>
   );
